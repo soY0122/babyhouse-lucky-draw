@@ -1,0 +1,314 @@
+/* ─── Backdrop ──────────────────────────────────────────────────────────────── */
+.wam-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(58, 50, 64, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px;
+  animation: wamFadeIn 0.2s ease-out;
+  cursor: default;
+}
+
+@keyframes wamFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Dialog Window ─────────────────────────────────────────────────────────── */
+.wam-dialog {
+  background: linear-gradient(170deg, #ffffff 0%, #fffbf8 50%, #fff5f8 100%);
+  border: 4px solid var(--pink);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  box-shadow: 0 16px 48px rgba(232, 117, 152, 0.45), 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px 24px;
+  text-align: center;
+  position: relative;
+  animation: wamPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+@keyframes wamPop {
+  0%   { transform: scale(0.75); opacity: 0; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* ─── Decor ─────────────────────────────────────────────────────────────────── */
+.wam-dialog__decor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.wam-dialog__teddy {
+  font-size: 2.8rem;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.12));
+  animation: wamTeddyBounce 2s ease-in-out infinite;
+}
+
+@keyframes wamTeddyBounce {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-6px) rotate(2deg); }
+}
+
+.wam-dialog__sparkle {
+  font-size: 1.8rem;
+  animation: wamTwinkle 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes wamTwinkle {
+  from { transform: scale(0.85); opacity: 0.6; }
+  to   { transform: scale(1.15); opacity: 1; }
+}
+
+/* ─── Heading ───────────────────────────────────────────────────────────────── */
+.wam-dialog__title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--pink-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 6px rgba(232, 117, 152, 0.2);
+}
+
+/* ─── Meta Badges ───────────────────────────────────────────────────────────── */
+.wam-dialog__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.wam-dialog__round {
+  background: var(--sky);
+  color: #1e5f7a;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+
+.wam-dialog__prize-badge {
+  background: var(--yellow);
+  color: #7a5a00;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 99px;
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wam-dialog__count-badge {
+  background: var(--mint);
+  color: #1f6b4d;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+
+/* ─── Body ──────────────────────────────────────────────────────────────────── */
+.wam-dialog__body {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 4px 2px;
+}
+
+/* ─── Single Winner Card ────────────────────────────────────────────────────── */
+.wam-single-card {
+  background: #ffffff;
+  border: 3px solid var(--blush-dark);
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 6px 20px rgba(232, 117, 152, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.wam-single-card__crown {
+  font-size: 2.2rem;
+  animation: wamCrown 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes wamCrown {
+  from { transform: translateY(0) scale(0.95); }
+  to   { transform: translateY(-4px) scale(1.05); }
+}
+
+.wam-single-card__name {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text);
+  word-break: break-all;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+.wam-single-card__ticket {
+  display: inline-block;
+  background: var(--blush);
+  color: var(--pink-dark);
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 5px 16px;
+  border-radius: 99px;
+  border: 1px solid var(--blush-dark);
+}
+
+.wam-single-card__prize {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.wam-single-card__prize strong {
+  color: var(--text);
+}
+
+/* ─── Multi Winner List ─────────────────────────────────────────────────────── */
+.wam-multi-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.wam-multi-item {
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.wam-multi-item:hover {
+  border-color: var(--pink);
+  transform: translateX(2px);
+}
+
+.wam-multi-item__rank {
+  width: 28px;
+  height: 28px;
+  background: var(--pink);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wam-multi-item__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.wam-multi-item__name {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.wam-multi-item__prize {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.wam-multi-item__ticket {
+  background: var(--blush);
+  color: var(--pink-dark);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Footer Action ─────────────────────────────────────────────────────────── */
+.wam-dialog__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.wam-dialog__confirm-btn {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%) !important;
+  color: #ffffff !important;
+  font-size: 1.2rem !important;
+  font-weight: 900 !important;
+  padding: 14px 60px !important;
+  border-radius: 99px !important;
+  border: 2px solid var(--pink-dark) !important;
+  box-shadow: 0 6px 18px rgba(232, 117, 152, 0.45) !important;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  letter-spacing: 2px;
+}
+
+.wam-dialog__confirm-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px rgba(232, 117, 152, 0.55) !important;
+}
+
+.wam-dialog__confirm-btn:active {
+  transform: scale(0.98);
+}
+
+.wam-dialog__confirm-btn:focus-visible {
+  outline: 3px solid var(--sky-dark);
+  outline-offset: 3px;
+}
+
+/* ─── Responsive adjustments ─────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .wam-dialog {
+    padding: 18px 16px 18px;
+    border-radius: 22px;
+  }
+  .wam-dialog__title {
+    font-size: 1.35rem;
+  }
+  .wam-single-card__name {
+    font-size: 1.7rem;
+  }
+  .wam-multi-item__name {
+    font-size: 1.1rem;
+  }
+  .wam-dialog__confirm-btn {
+    width: 100%;
+    padding: 12px 24px !important;
+  }
+}

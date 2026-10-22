@@ -1,0 +1,130 @@
+.rs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rs__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rs__label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.rs__required { color: var(--pink-dark); }
+
+.rs__input {
+  padding: 9px 12px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.88rem;
+  color: var(--text);
+  background: white;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.rs__input:focus {
+  outline: none;
+  border-color: var(--sky-dark);
+}
+
+.rs__input--narrow { max-width: 120px; }
+
+.rs__input--error {
+  border-color: #FC8181 !important;
+  background: #FFF5F5;
+}
+
+.rs__field-error {
+  font-size: 0.75rem;
+  color: #E53E3E;
+  margin-top: 2px;
+}
+
+.rs__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rs__checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--pink);
+  cursor: pointer;
+}
+
+.rs__checkbox-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Summary box */
+.rs__summary {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rs__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.rs__summary-row span { color: var(--text-muted); }
+.rs__summary-row strong { font-weight: 700; }
+.rs__summary-row--sep {
+  height: 1px;
+  background: var(--border);
+  margin: 3px 0;
+}
+
+/* Alert */
+.rs__alert {
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.rs__alert--error {
+  background: #FFF5F5;
+  border: 1px solid #FFCDD2;
+  color: #C53030;
+}
+
+/* Start button */
+.rs__actions { display: flex; }
+
+.rs__start-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: var(--radius);
+}
+
+.rs__no-data {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 8px;
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+}

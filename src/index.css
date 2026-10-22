@@ -1,0 +1,63 @@
+/* ─── Reset & base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream:      #FFF8F0;
+  --sky:        #AEE6FF;
+  --sky-dark:   #7DCFEF;
+  --yellow:     #FFF3B0;
+  --yellow-dark:#F5D86E;
+  --mint:       #C8F5E6;
+  --mint-dark:  #7EE5C5;
+  --blush:      #FFD6E2;
+  --blush-dark: #FFB3CA;
+  --pink:       #FF9BB3;
+  --pink-dark:  #E87598;
+  --text:       #3A3240;
+  --text-muted: #8E8699;
+  --border:     #E8DDEF;
+  --shadow:     rgba(180, 140, 180, 0.15);
+  --radius:     16px;
+  --radius-sm:  10px;
+  --font:       'Apple SD Gothic Neo', 'Malgun Gothic', 'Nanum Gothic', sans-serif;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--blush-dark); border-radius: 99px; }
+
+/* ─── Typography ─────────────────────────────────────────────────────────────── */
+h1, h2, h3 { line-height: 1.3; }
+
+/* ─── Utility ─────────────────────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

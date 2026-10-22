@@ -1,0 +1,326 @@
+/* ─── SlotMachine wrapper ────────────────────────────────────────────────────── */
+.sm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 8px 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ─── Top Controls (Speed & Mute) ─────────────────────────────────────────────── */
+.sm__controls {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.sm__speed-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  padding: 4px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px var(--shadow);
+}
+
+.sm__speed-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+.sm__speed-btn {
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 99px;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sm__speed-btn:hover:not(:disabled) {
+  background: var(--cream);
+  color: var(--text);
+}
+
+.sm__speed-btn--active {
+  background: var(--pink) !important;
+  color: white !important;
+  font-weight: 800;
+  border-color: var(--pink-dark) !important;
+  box-shadow: 0 2px 4px rgba(232, 117, 152, 0.3);
+}
+
+.sm__mute-btn {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  box-shadow: 0 2px 6px var(--shadow);
+}
+.sm__mute-btn:hover {
+  background: var(--blush);
+  border-color: var(--blush-dark);
+  transform: scale(1.05);
+}
+
+/* ─── Machine Body ────────────────────────────────────────────────────────────── */
+.sm__machine {
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(160deg, #ffffff 0%, var(--blush) 100%);
+  border: 3px solid var(--blush-dark);
+  border-radius: 26px;
+  box-shadow: 0 8px 30px var(--shadow), 0 2px 8px rgba(0,0,0,0.06);
+  padding: 16px 18px 12px;
+  position: relative;
+}
+
+/* ─── Top Decoration ─────────────────────────────────────────────────────────── */
+.sm__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.sm__teddy {
+  font-size: 2.3rem;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
+  animation: bounceTeddy 2.2s ease-in-out infinite;
+}
+
+@keyframes bounceTeddy {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-6px) rotate(2deg); }
+}
+
+.sm__star {
+  font-size: 1.4rem;
+  animation: twinkle 1.5s ease-in-out infinite alternate;
+}
+.sm__star--1 { animation-delay: 0s; }
+.sm__star--2 { animation-delay: 0.6s; }
+
+@keyframes twinkle {
+  from { opacity: 0.6; transform: scale(0.85); }
+  to   { opacity: 1;   transform: scale(1.15); }
+}
+
+/* ─── Single Vertical Reel Window ────────────────────────────────────────────── */
+.sm__slot-window {
+  height: 180px; /* 3 rows x 60px */
+  border-radius: 14px;
+  background: #ffffff;
+  border: 2px solid var(--sky-dark);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 3px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+}
+
+.sm__reel-row {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  text-align: center;
+  position: relative;
+}
+
+.sm__reel-row--dim {
+  opacity: 0.35;
+  filter: blur(0.5px);
+  transform: scale(0.92);
+}
+
+.sm__reel-row--center {
+  background: rgba(255, 248, 240, 0.7);
+  border-top: 2px solid var(--pink);
+  border-bottom: 2px solid var(--pink);
+  z-index: 2;
+}
+
+.sm__reel-star {
+  font-size: 1.1rem;
+  margin: 0 10px;
+  animation: starPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes starPulse {
+  from { transform: scale(0.85); opacity: 0.7; }
+  to   { transform: scale(1.15); opacity: 1; }
+}
+
+.sm__reel-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  word-break: break-all;
+  max-width: 320px;
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+
+.sm__reel-text--highlight {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.sm__reel-text--winner-locked {
+  color: var(--pink-dark);
+  font-size: 1.45rem;
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(232, 117, 152, 0.25);
+  animation: winnerLock 0.3s ease-out;
+}
+
+@keyframes winnerLock {
+  0%   { transform: scale(0.8); }
+  60%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Glass overlay gradients top/bottom */
+.sm__window-overlay {
+  position: absolute;
+  left: 0; right: 0;
+  height: 52px;
+  pointer-events: none;
+  z-index: 3;
+}
+.sm__window-overlay--top    { top: 0;    background: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent); }
+.sm__window-overlay--bottom { bottom: 0; background: linear-gradient(to top,   rgba(255,255,255,0.9), transparent); }
+
+/* Center highlight line indicator */
+.sm__window-highlight-bar {
+  position: absolute;
+  left: 0; right: 0;
+  top: 60px; height: 60px;
+  box-shadow: inset 0 0 14px rgba(255, 155, 179, 0.18);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Bottom / Lever ─────────────────────────────────────────────────────────── */
+.sm__bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  padding-right: 6px;
+}
+
+.sm__lever {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sm__lever-ball {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  transition: transform 0.15s;
+}
+
+.sm__lever-rod {
+  width: 4px;
+  height: 26px;
+  background: linear-gradient(to bottom, var(--blush-dark), var(--sky-dark));
+  border-radius: 2px;
+}
+
+.sm__lever--active .sm__lever-ball {
+  animation: leverPulse 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes leverPulse {
+  from { transform: translateY(0); }
+  to   { transform: translateY(6px); }
+}
+
+/* ─── Confetti ────────────────────────────────────────────────────────────────── */
+.sm__confetti-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.sm__confetti-particle {
+  position: absolute;
+  border-radius: 3px;
+}
+
+/* ─── Status text ─────────────────────────────────────────────────────────────── */
+.sm__status {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sm__status-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 99px;
+  padding: 6px 18px;
+}
+
+.sm__status-text--idle     { color: var(--text-muted); background: transparent; }
+.sm__status-text--spinning { color: var(--pink-dark); background: var(--blush); animation: statusPulse 1s ease infinite; }
+.sm__status-text--done     { color: #276749; background: var(--mint); }
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* ─── Balloons ────────────────────────────────────────────────────────────────── */
+.sm__balloons {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sm__balloon {
+  position: absolute;
+  font-size: 1.6rem;
+  animation: floatBalloon 4s ease-in-out infinite;
+  opacity: 0.35;
+}
+.sm__balloon--1 { left: 4%;  bottom: 20%; animation-delay: 0s; }
+.sm__balloon--2 { right: 4%; bottom: 35%; animation-delay: 1.3s; }
+.sm__balloon--3 { left: 8%;  bottom: 50%; animation-delay: 2.6s; }
+
+@keyframes floatBalloon {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-18px) rotate(5deg); }
+}
